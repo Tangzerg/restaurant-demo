@@ -1,22 +1,25 @@
 const CATEGORIES = ["All", "Starters", "Mains", "Desserts"];
 
-export default function Menu({ dishes, selectedCategory, onCategoryChange, onAddToCart }) {
+export default function Menu({ dishes, selectedCategory, onCategoryChange, onAddToCart, onSurpriseMe }) {
   const filteredDishes = dishes;
 
   return (
     <section className="menu">
       <h2>Menu</h2>
 
-      <div className="category-filters">
-        {CATEGORIES.map((cat) => (
-          <button
-            key={cat}
-            className={`filter-btn ${selectedCategory === cat ? "active" : ""}`}
-            onClick={() => onCategoryChange(cat)}
-          >
-            {cat}
-          </button>
-        ))}
+      <div className="menu-header-row">
+        <div className="category-filters">
+          {CATEGORIES.map((cat) => (
+            <button
+              key={cat}
+              className={`filter-btn ${selectedCategory === cat ? "active" : ""}`}
+              onClick={() => onCategoryChange(cat)}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+        <button className="surprise-me-btn" onClick={onSurpriseMe}>Surprends-moi ✨</button>
       </div>
 
       <div className="dish-grid">

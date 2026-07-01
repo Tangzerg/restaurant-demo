@@ -3,12 +3,15 @@ import { dishes, deliveryInfo } from "./data";
 import Menu from "./components/Menu";
 import Cart from "./components/Cart";
 import PaymentModal from "./components/PaymentModal";
+import SurpriseModal from "./components/SurpriseModal";
+import { appendOrderHistory } from "./mockUserProfile";
 import "./App.css";
 
 export default function App() {
   const [cart, setCart] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [showPayment, setShowPayment] = useState(false);
+  const [showSurprise, setShowSurprise] = useState(false);
 
   function addToCart(dish) {
     setCart((prev) => [...prev, { ...dish, quantity: 1 }]);
@@ -44,6 +47,7 @@ export default function App() {
           selectedCategory={selectedCategory}
           onCategoryChange={setSelectedCategory}
           onAddToCart={addToCart}
+          onSurpriseMe={() => setShowSurprise(true)}
         />
         <Cart cart={cart} onRemove={removeFromCart} onCheckout={() => setShowPayment(true)} />
       </main>
@@ -51,7 +55,18 @@ export default function App() {
         <PaymentModal
           cart={cart}
           onClose={() => setShowPayment(false)}
-          onSuccess={() => { setCart([]); setShowPayment(false); }}
+          onSuccess={() => {
+            appendOrderHistory(cart.flatMap((item) => Array(item.quantity).fill(item.id)));
+            setCart([]);
+            setShowPayment(false);
+          }}
+        />
+      )}
+      {showSurprise && (
+        <SurpriseModal
+          dishes={dishes}
+          onAddToCart={addToCart}
+          onClose={() => setShowSurprise(false)}
         />
       )}
     </div>

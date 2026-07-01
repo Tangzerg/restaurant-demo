@@ -112,11 +112,36 @@ body {
   color: #1a271f;
 }
 
+.menu-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
 .category-filters {
   display: flex;
   gap: 8px;
-  margin-bottom: 28px;
   flex-wrap: wrap;
+}
+
+.surprise-me-btn {
+  padding: 8px 20px;
+  border: none;
+  border-radius: 4px;
+  background: linear-gradient(135deg, #00c1b2 0%, #00a99c 100%);
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: filter 0.15s;
+  white-space: nowrap;
+}
+
+.surprise-me-btn:hover {
+  filter: brightness(1.08);
 }
 
 .filter-btn {
@@ -530,6 +555,91 @@ body {
 
 .modal-btn-full {
   width: 100%;
+}
+
+/* Surprise Me modal */
+.surprise-subtitle {
+  font-size: 0.95rem;
+  color: #6b7c71;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.surprise-choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.surprise-choice-card {
+  padding: 16px 12px;
+  border: 1.5px solid #d8d4cf;
+  border-radius: 8px;
+  background: white;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1a271f;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.surprise-choice-card:hover {
+  border-color: #00c1b2;
+  color: #00c1b2;
+  background: #e6faf8;
+}
+
+.surprise-choice-emoji {
+  font-size: 1.1rem;
+  margin-right: 4px;
+}
+
+.surprise-result-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.surprise-dish-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px;
+  border: 1px solid #ede9e4;
+  border-radius: 8px;
+  background: #f8f4ef;
+}
+
+.surprise-dish-card .dish-emoji {
+  font-size: 1.8rem;
+}
+
+.surprise-dish-card h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1a271f;
+}
+
+.surprise-dish-card p {
+  font-size: 0.8rem;
+  color: #6b7c71;
+}
+
+.surprise-dish-card .dish-price {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #1a271f;
+  margin: 2px 0 6px;
+}
+
+.surprise-toast {
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #00a99c;
+  margin-bottom: 12px;
 }
 
 /* Card form */
